@@ -1,0 +1,22 @@
+name: "CD"
+
+on:
+  pull-request:
+    branches:
+      - [ main ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Baixar a imagem Dockerhub
+        run: docker pull kauaqt/api-teste:v1
+
+      - name: Parar o container em execução
+        run: docker stop ci-example || true
+
+      - name: Remover o container parado
+        run: docker container rm ci-example || true
+      
+      - name: Rodar o container novo
+        run: docker run --name ci-example -d -p 8080:8080 kauaqt/api-teste:v1
