@@ -37,10 +37,10 @@ jobs:
         uses: docker/build-push-action@v5
         with: 
          push: true
-         tags: kauaqt/ci-xample:v1
+         tags: kauaqt/api-teste:v1
     
       - name: Build docker image
-        run: docker build -t kauaqt/ci-example:v1 .
+        run: docker build -t kauaqt/api-teste:v1 .
 
       - name: Push image
-        run: docker push kauaqt/ci-example:v1
+        run: docker push kauaqt/api-teste:v1
